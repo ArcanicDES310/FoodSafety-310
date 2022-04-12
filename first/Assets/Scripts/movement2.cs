@@ -10,6 +10,9 @@ public class movement2 : MonoBehaviour
     float m_horizontal;
     float m_vertical;
 
+
+
+    public GameObject infoPanel;
     public GameObject miniPanel;
     public float PlayerSpeed = 0.03f;
     public float rotationSpeed;
@@ -32,33 +35,31 @@ public class movement2 : MonoBehaviour
 
         if (m_playerMovement != Vector3.zero)
         {
-            animator.SetBool("isMoving", true);
+            animator.SetBool("isWalking", true);
 
             Quaternion toRotation = Quaternion.LookRotation(m_playerMovement, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
-        else animator.SetBool("isMoving", false);
+        else animator.SetBool("isWalking", false);
            
     }
 
+  // private void OnCollisionEnter(Collision collision)
+  // {
+  //     if (collision.gameObject.tag == "machine")
+  //     {
+  //         miniPanel.SetActive(true);
+  //     }
+  // }
 
-   
-    // Testing for github desktop
-   
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag=="machine")
-    //    {
-    //        miniPanel.SetActive(true);
-    //    }
-    //}
 
     private void OnCollisionEnter(Collision collision)
+
     {
-        if (collision.gameObject.tag == "machine")
+        if (collision.gameObject.tag=="npc")
         {
-            miniPanel.SetActive(true);
+            infoPanel.SetActive(true);
         }
     }
 }
