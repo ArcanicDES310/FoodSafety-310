@@ -66,10 +66,10 @@ public class PlayerMovement : MonoBehaviour
                 Walk();
 
             }
-           // else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
-           // {
-           //     Run();
-           // }
+            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
+            {
+                Run();
+            }
             else if (moveDirection == Vector3.zero)
             {
                 Idle();
@@ -98,12 +98,13 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
 
     }
+    private void Run()
+    {
+        moveSpeed = walkSpeed;
+        anim.SetFloat("Speed", 1.0f, 0.1f, Time.deltaTime);
 
- // private void Run()
- // {
- //     moveSpeed = runSpeed;
- //     anim.SetFloat("Speed", 1.0f,0.1f,Time.deltaTime);
- //
- // }
+    }
+
+
 
 }

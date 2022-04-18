@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class DragController : MonoBehaviour
@@ -20,8 +22,8 @@ public class DragController : MonoBehaviour
 
     public Text timerText;
     bool hasWon;
-    
 
+    DragController dragScript;
 
 
 
@@ -39,11 +41,18 @@ public class DragController : MonoBehaviour
 
     void Start()
     {
+
+        PlayerPrefs.SetInt("playedOnce", 1);
+
         hasWon = false;
         thrownPies = 0;
         timer = 20;
         pies = GameObject.FindGameObjectWithTag("Pie");
         GamePanel.SetActive(false);
+        
+        dragScript = GetComponent<DragController>();
+        dragScript.enabled = true;
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -57,13 +66,11 @@ public class DragController : MonoBehaviour
 
         
 
-       //if (timer <= 0)
-       //{
-       //
-       //    GamePanel.SetActive(true);
-       //
-       //}
-       //    Time.timeScale = 0;
+        if(timer<=0)
+        {
+            Time.timeScale = 0;
+            dragScript.enabled = false;
+        }
          
 
         if(_isDragActive && (Input.GetMouseButtonUp(0)||(Input.touchCount==1&&Input.GetTouch(0).phase==TouchPhase.Ended)))
@@ -153,6 +160,11 @@ public class DragController : MonoBehaviour
         }
 
 
+    }
+
+    public void ExitButton()
+    {
+        SceneManager.LoadScene(1);
     }
 
 
