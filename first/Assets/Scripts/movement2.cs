@@ -13,17 +13,25 @@ public class movement2 : MonoBehaviour
 
 
 
-    public GameObject infoPanel;
-    public GameObject miniPanel;
+    
+   
     public float PlayerSpeed = 0.03f;
     public float rotationSpeed;
     public Animator animator;
     public GameObject ovenCollider;
+    public GameObject lockerCollider;
 
+    //Panels
     public GameObject GamePanelOven;
+    public GameObject GamePanelLocker;
+    public GameObject NpcPanel;
+
+
+
+
     void Start()
     {
-       // PlayerPrefs.DeleteAll();
+      
 
         if(PlayerPrefs.GetInt("playedOnce",0)==1)
         {
@@ -34,17 +42,18 @@ public class movement2 : MonoBehaviour
 
         transform.position = new Vector3(PlayerPrefs.GetFloat("xPos", 0), PlayerPrefs.GetFloat("yPos", 0), PlayerPrefs.GetFloat("zPos", 0));
 
+        if(PlayerPrefs.GetInt("hasPlayed",0)==1)
+        {
+            lockerCollider.SetActive(false);
+        }
+       
+
 
         m_charCont = GetComponent<CharacterController>();
-        miniPanel.SetActive(false);
+       
         animator = GetComponent<Animator>();
 
 
-       // PlayerPrefs.GetFloat("xPos", 0);
-       // PlayerPrefs.GetFloat("yPos", 0);
-       // PlayerPrefs.GetFloat("zPos", 0);
-
-       // transform.position = new Vector3(PlayerPrefs.GetFloat("xPos", 0), PlayerPrefs.GetFloat("yPos", 0), PlayerPrefs.GetFloat("zPos", 0));
     }
 
     void Update()
@@ -52,7 +61,7 @@ public class movement2 : MonoBehaviour
         m_horizontal = Input.GetAxis("Horizontal");
         m_vertical = Input.GetAxis("Vertical");
 
-        Vector3 m_playerMovement = new Vector3(m_horizontal, 0f, m_vertical) * PlayerSpeed;
+        Vector3 m_playerMovement = new Vector3(m_horizontal, 0f, m_vertical).normalized * PlayerSpeed; 
 
         m_charCont.Move(m_playerMovement);
 
@@ -68,20 +77,6 @@ public class movement2 : MonoBehaviour
            
     }
 
-  
-
-
-    private void OnCollisionEnter(Collision collision)
-
-    {
-        if (collision.gameObject.tag=="npc")
-        {
-            infoPanel.SetActive(true);
-        }
-    }
-
-    
-
    private void OnTriggerEnter(Collider other)
    {
   
@@ -89,6 +84,21 @@ public class movement2 : MonoBehaviour
        {
             GamePanelOven.SetActive(true);
        }
+
+       if(other.gameObject.tag=="LockerCollider")
+       {
+            GamePanelLocker.SetActive(true);
+
+       }
+
+       if (other.gameObject.tag=="NpcCollider")
+       {
+
+            NpcPanel.SetActive(true);
+
+       }
+
+        
   
    }
 
@@ -99,9 +109,19 @@ public class movement2 : MonoBehaviour
             GamePanelOven.SetActive(false);
         }
 
+        if(other.gameObject.tag=="LockerCollider")
+        {
+            GamePanelLocker.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "NpcCollider")
+        {
+
+            NpcPanel.SetActive(false);
+
+        }
+
     }
-
-
 
     public void ovenGameStart()
     {
@@ -112,16 +132,22 @@ public class movement2 : MonoBehaviour
 
 
         SceneManager.LoadScene(2);
+    }
+
+    public void lockerGameStart()
+    {
+
+        PlayerPrefs.SetFloat("xPos", transform.position.x);
+        PlayerPrefs.SetFloat("yPos", transform.position.y);
+        PlayerPrefs.SetFloat("zPos", transform.position.z);
 
 
+        SceneManager.LoadScene(3);
     }
 
     public void resetkeys()
     {
-
         PlayerPrefs.DeleteAll();
-
-
     }
 
 

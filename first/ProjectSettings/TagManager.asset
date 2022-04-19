@@ -8,6 +8,14 @@ TagManager:
   - Pie
   - npc
   - ovenCollider
+  - Coat
+  - shelfCollider
+  - CharHuman
+  - Boots
+  - Gloves
+  - HairCap
+  - LockerCollider
+  - NpcCollider
   layers:
   - Default
   - TransparentFX
