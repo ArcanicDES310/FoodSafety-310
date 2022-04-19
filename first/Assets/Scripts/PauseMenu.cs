@@ -50,4 +50,9 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Exit Done");
         Application.Quit();
     }
+
+    public void leftArrowClick()
+    {
+        Debug.Log("left arrow pressed");
+    }
 }
