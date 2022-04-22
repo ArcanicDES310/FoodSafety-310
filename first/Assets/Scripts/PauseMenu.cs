@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject PauseMenuUI;
+    public GameObject miniClipboard;
 
 
     void Update()
@@ -17,16 +18,21 @@ public class PauseMenu : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+           
+
+
             if(GameIsPaused)
             {
+                
                 Resume();
             }
             else
             {
+                miniClipboard.SetActive(false);
                 Pause();
             }
         }
-        
+   
     }
 
     public void Resume()
@@ -34,11 +40,12 @@ public class PauseMenu : MonoBehaviour
 
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        miniClipboard.SetActive(true);
         GameIsPaused = false;
 
     }
 
-    void Pause()
+    public void Pause()
     {
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;

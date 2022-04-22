@@ -10,7 +10,13 @@ public class DragObject2 : MonoBehaviour
 
     public GameObject charShoe;
     public GameObject lockerShoe;
-   
+
+
+
+    private void Update()
+    {
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -17.5f, 17.5f), Mathf.Clamp(transform.position.y, -4.1f, 4.1f));
+    }
     public void OnMouseDown()
     {
         mouseButtonReleased = false;

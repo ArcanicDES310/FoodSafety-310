@@ -15,6 +15,10 @@ public class DragController : MonoBehaviour
     private Vector3 _worldPosition;
     private Draggable _lastDragged;
 
+
+    public GameObject pie1;
+    public GameObject pie2;
+    public GameObject pie3;
     GameObject pies;
     public static float timer=20;
     public GameObject GamePanel;
@@ -57,6 +61,10 @@ public class DragController : MonoBehaviour
 
     void Update()
     {
+        pie1.transform.position = new Vector2(Mathf.Clamp(pie1.transform.position.x, -8.8f, 8.8f), Mathf.Clamp(pie1.transform.position.y, -5f, 5f));
+        pie2.transform.position = new Vector2(Mathf.Clamp(pie2.transform.position.x, -8.8f, 8.8f), Mathf.Clamp(pie2.transform.position.y, -5f, 5f));
+        pie3.transform.position = new Vector2(Mathf.Clamp(pie3.transform.position.x, -8.8f, 8.8f), Mathf.Clamp(pie3.transform.position.y, -5f, 5f));
+
         if (hasWon == false)
         {
             timer -= Time.deltaTime;
@@ -73,69 +81,12 @@ public class DragController : MonoBehaviour
         }
          
 
-        if(_isDragActive && (Input.GetMouseButtonUp(0)||(Input.touchCount==1&&Input.GetTouch(0).phase==TouchPhase.Ended)))
-        {
-            Drop();
-            return;
-        }
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 mousePos = Input.mousePosition;
-            _screenPosition = new Vector2(mousePos.x, mousePos.y);
-        }
-        else
-        {
-            return;
-        }
-
-        _worldPosition = Camera.main.ScreenToWorldPoint(_screenPosition);
-
-        if (_isDragActive)
-        {
-            Drag();
-        }
-        else
-        {
-            RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
-            if (hit.collider != null)
-            {
-                Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
-                if (draggable != null)
-                {
-                    _lastDragged = draggable;
-                    InitDrag();
-                }
-
-
-
-            }
-        }
-        void InitDrag()
-        {
-            _isDragActive = true;
-        }
-
-        void Drag()
-        {
-            _lastDragged.transform.position= new Vector2(_worldPosition.x, _worldPosition.y);
-        }
-
-        void Drop()
-        {
-            _isDragActive = false;
-        }
+  
 
 
         
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //    //if(collision.gameObject.tag=="Pie")
-    //    //{
-    //    //    Destroy(collision.gameObject);
-    //    //}
-    // }  //
     public void winState()
     {
         GamePanel.SetActive(true);
@@ -144,10 +95,7 @@ public class DragController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Pie")
-        {
-            //Destroy(collision.gameObject);
-
-            // pies.SetActive(false);
+        { 
 
             collision.gameObject.SetActive(false);
 

@@ -1397,9 +1397,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1003652333}
   - component: {fileID: 1003652332}
-  - component: {fileID: 1003652331}
   - component: {fileID: 1003652330}
   - component: {fileID: 1003652334}
+  - component: {fileID: 1003652331}
   m_Layer: 0
   m_Name: Pie2
   m_TagString: Pie
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1003652329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ccb82ce7094534aa7927b23ad30a97, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ebd8448386d3b644b75777b24940d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1003652332
@@ -1876,9 +1876,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1614018855}
   - component: {fileID: 1614018854}
-  - component: {fileID: 1614018853}
   - component: {fileID: 1614018852}
   - component: {fileID: 1614018856}
+  - component: {fileID: 1614018853}
   m_Layer: 0
   m_Name: Pie1
   m_TagString: Pie
@@ -1911,7 +1911,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1614018851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ccb82ce7094534aa7927b23ad30a97, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ebd8448386d3b644b75777b24940d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1614018854
@@ -2191,6 +2191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b90d0bb6488b6948886b142ac069fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pie1: {fileID: 1614018851}
+  pie2: {fileID: 1003652329}
+  pie3: {fileID: 2014999031}
   GamePanel: {fileID: 936690744}
   thrownPies: 0
   timerText: {fileID: 291371261}
@@ -2269,11 +2272,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690896820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.08, y: -1.94, z: 0}
+  m_LocalPosition: {x: -6.69, y: -1.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1714659906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1714659907}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1714659907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714659906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.43, y: 5.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931513521
 GameObject:
@@ -2389,9 +2422,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2014999035}
   - component: {fileID: 2014999034}
-  - component: {fileID: 2014999033}
   - component: {fileID: 2014999032}
   - component: {fileID: 2014999036}
+  - component: {fileID: 2014999033}
   m_Layer: 0
   m_Name: Pie3
   m_TagString: Pie
@@ -2424,7 +2457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2014999031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ccb82ce7094534aa7927b23ad30a97, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ebd8448386d3b644b75777b24940d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &2014999034

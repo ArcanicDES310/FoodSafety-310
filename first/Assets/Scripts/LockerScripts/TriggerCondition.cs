@@ -46,7 +46,12 @@ public class TriggerCondition : MonoBehaviour
             exitButton.SetActive(true);
 
         }
-        
+
+        placeBoot.transform.position = new Vector2(Mathf.Clamp(placeBoot.transform.position.x,-17.5f,17.5f),Mathf.Clamp(placeBoot.transform.position.y,-4.1f,4.1f));
+        placeCoat.transform.position = new Vector2(Mathf.Clamp(placeCoat.transform.position.x, -17.5f, 17.5f), Mathf.Clamp(placeCoat.transform.position.y, -4.1f, 4.1f));
+        placeGlove.transform.position = new Vector2(Mathf.Clamp(placeGlove.transform.position.x, -17.5f, 17.5f), Mathf.Clamp(placeGlove.transform.position.y, -4.1f, 4.1f));
+        placeCap.transform.position = new Vector2(Mathf.Clamp(placeCap.transform.position.x, -17.5f, 17.5f), Mathf.Clamp(placeCap.transform.position.y, -4.1f, 4.1f));
+
     }
 
 

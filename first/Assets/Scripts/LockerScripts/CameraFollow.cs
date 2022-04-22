@@ -44,7 +44,7 @@ namespace followCam
 
           
 
-          transform.position = new Vector3(Mathf.Clamp(transform.position.x, -9.9f, 11.3f), transform.position.y,transform.position.z);
+          transform.position = new Vector3(Mathf.Clamp(transform.position.x, -9.8f, 9.8f), transform.position.y,transform.position.z);
 
 
         }

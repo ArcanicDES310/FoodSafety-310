@@ -16,6 +16,7 @@ TagManager:
   - HairCap
   - LockerCollider
   - NpcCollider
+  - MiniClipboard
   layers:
   - Default
   - TransparentFX
