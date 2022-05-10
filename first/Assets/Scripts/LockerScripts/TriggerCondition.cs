@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TriggerCondition : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class TriggerCondition : MonoBehaviour
     public GameObject glove;
     public GameObject cap;
     public GameObject lockerShoe;
+    public GameObject handwash1;
+    public GameObject handwash2;
 
 
     //Environment
@@ -21,7 +24,17 @@ public class TriggerCondition : MonoBehaviour
     public GameObject placeGlove;
     public GameObject placeCap;
 
+
+    //
+    public static int taskCount = 7;
+    public Text taskCounter;
+    
+
+   
+
+    //Buttons
     public GameObject exitButton;
+  
 
     private void Start()
     {
@@ -33,6 +46,10 @@ public class TriggerCondition : MonoBehaviour
         coat.SetActive(false);
         glove.SetActive(false);
         cap.SetActive(false);
+
+        taskCounter.text = taskCount.ToString();
+
+
         
 
     }
@@ -40,17 +57,32 @@ public class TriggerCondition : MonoBehaviour
     private void Update()
     {
 
-        if(boots.activeInHierarchy && coat.activeInHierarchy && glove.activeInHierarchy && cap.activeInHierarchy && lockerShoe.activeInHierarchy)
+        taskCounter.text = taskCount.ToString();
+
+      // if (lockerShoe.activeInHierarchy || handwash1==null || handwash2==null)
+      //
+      // {
+      //     taskCount--;
+      //     
+      // }
+
+       
+
+        if(boots.activeInHierarchy && coat.activeInHierarchy && glove.activeInHierarchy && cap.activeInHierarchy && lockerShoe.activeInHierarchy &&  handwash1==null && handwash2==null) //!handwash1.activeInHierarchy && !handwash2.activeInHierarchy)
         {
 
+            
             exitButton.SetActive(true);
-
+            Time.timeScale = 0;
         }
 
         placeBoot.transform.position = new Vector2(Mathf.Clamp(placeBoot.transform.position.x,-17.5f,17.5f),Mathf.Clamp(placeBoot.transform.position.y,-4.1f,4.1f));
         placeCoat.transform.position = new Vector2(Mathf.Clamp(placeCoat.transform.position.x, -17.5f, 17.5f), Mathf.Clamp(placeCoat.transform.position.y, -4.1f, 4.1f));
         placeGlove.transform.position = new Vector2(Mathf.Clamp(placeGlove.transform.position.x, -17.5f, 17.5f), Mathf.Clamp(placeGlove.transform.position.y, -4.1f, 4.1f));
         placeCap.transform.position = new Vector2(Mathf.Clamp(placeCap.transform.position.x, -17.5f, 17.5f), Mathf.Clamp(placeCap.transform.position.y, -4.1f, 4.1f));
+
+
+        
 
     }
 
@@ -61,24 +93,32 @@ public class TriggerCondition : MonoBehaviour
         {
             boots.SetActive(true);
             placeBoot.SetActive(false);
+            taskCount--;
+            
         }
 
         if (collision.gameObject.tag == "Coat")
         {
             coat.SetActive(true);
             placeCoat.SetActive(false);
+            taskCount--;
+
         }
 
         if (collision.gameObject.tag == "Gloves")
         {
             glove.SetActive(true);
             placeGlove.SetActive(false);
+            taskCount--;
+
         }
 
         if (collision.gameObject.tag == "HairCap")
         {
             cap.SetActive(true);
             placeCap.SetActive(false);
+            taskCount--;
+
         }
        
 

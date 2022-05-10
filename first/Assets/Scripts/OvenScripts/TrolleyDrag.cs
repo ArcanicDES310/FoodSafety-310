@@ -12,6 +12,8 @@ public class TrolleyDrag : MonoBehaviour
 
     public GameObject ReplayButton;
 
+    public static int thrownTrays = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,12 @@ public class TrolleyDrag : MonoBehaviour
             coroutine = pausetime(2.0f);
 
             StartCoroutine(coroutine);
+        }
+
+        if(collision.gameObject.tag=="Tray")
+        {
+            Destroy(collision.gameObject);
+            thrownTrays++;
         }
     }
 

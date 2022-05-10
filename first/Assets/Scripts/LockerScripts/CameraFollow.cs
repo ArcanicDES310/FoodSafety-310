@@ -7,10 +7,17 @@ namespace followCam
 
 {
 
+
+    
+
     public class CameraFollow : MonoBehaviour
     {
 
-        private Camera myCamera;
+        public GameObject rightArrowSprite;
+        public GameObject leftArrowSprite;
+        
+        //
+       // private Camera myCamera;
         private Func<Vector3> GetCameraFollowPositionFunc;
       
         
@@ -21,10 +28,10 @@ namespace followCam
            
         }
 
-        private void Start()
-        {
-            myCamera = transform.GetComponent<Camera>();
-        }
+       // private void Start()
+       // {
+       //     myCamera = transform.GetComponent<Camera>();
+       // }
 
         public void SetCameraFollowPosition(Vector3 cameraFollowPosition)
         {
@@ -46,7 +53,30 @@ namespace followCam
 
           transform.position = new Vector3(Mathf.Clamp(transform.position.x, -9.8f, 9.8f), transform.position.y,transform.position.z);
 
+            if(transform.position.x <= -9.8f)
+            {
 
+                leftArrowSprite.SetActive(false);
+
+            }
+
+            else
+            {
+                leftArrowSprite.SetActive(true);
+            }
+
+
+            if(transform.position.x >= 9.8f)
+            {
+               
+                rightArrowSprite.SetActive(false);
+            }
+            else
+            {
+
+                rightArrowSprite.SetActive(true);
+
+            }
         }
 
         private void HandleMovement()

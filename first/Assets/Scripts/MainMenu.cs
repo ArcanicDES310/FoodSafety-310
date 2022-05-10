@@ -17,5 +17,11 @@ public class MainMenu : MonoBehaviour
          Application.Quit();
     }
 
+    public void newGame()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
 
 }

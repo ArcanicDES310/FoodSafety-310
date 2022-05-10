@@ -11,6 +11,8 @@ public class DragObject2 : MonoBehaviour
     public GameObject charShoe;
     public GameObject lockerShoe;
 
+    public BoxCollider2D bootsCollider;
+
 
 
     private void Update()
@@ -42,6 +44,8 @@ public class DragObject2 : MonoBehaviour
          {
              lockerShoe.SetActive(true);
              charShoe.SetActive(false);
+            TriggerCondition.taskCount--;
+            bootsCollider.enabled = true;
          }
      }
 

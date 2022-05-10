@@ -25,18 +25,27 @@ public class movement2 : MonoBehaviour
     public GameObject GamePanelOven;
     public GameObject GamePanelLocker;
     public GameObject NpcPanel;
+    public GameObject BWInteractButton;
+
+    //Objectives checkbox
+    public GameObject OvenCheck;
+    public GameObject LockerCheck;
 
 
 
 
     void Start()
     {
-      
+
+        Time.timeScale = 1;
+
 
         if(PlayerPrefs.GetInt("playedOnce",0)==1)
         {
 
             ovenCollider.SetActive(false);
+            OvenCheck.SetActive(true);
+
 
         }
 
@@ -45,6 +54,7 @@ public class movement2 : MonoBehaviour
         if(PlayerPrefs.GetInt("hasPlayed",0)==1)
         {
             lockerCollider.SetActive(false);
+            LockerCheck.SetActive(true);
         }
        
 
@@ -95,8 +105,11 @@ public class movement2 : MonoBehaviour
        {
 
             NpcPanel.SetActive(true);
+            BWInteractButton.SetActive(false);
 
-       }
+        }
+
+     
 
         
   
@@ -118,9 +131,11 @@ public class movement2 : MonoBehaviour
         {
 
             NpcPanel.SetActive(false);
+            BWInteractButton.SetActive(true);
 
         }
 
+     
     }
 
     public void ovenGameStart()

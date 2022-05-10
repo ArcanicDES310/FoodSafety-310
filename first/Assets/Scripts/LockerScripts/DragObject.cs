@@ -8,6 +8,11 @@ public class DragObject : MonoBehaviour
     private float offsetX,offsetY;
     public static bool mouseButtonReleased;
 
+
+  //  public void Update()
+  //  {
+  //      transform.position = new Vector2(Mathf.Clamp(transform.position.x, -8.8f, 8.8f), Mathf.Clamp(transform.position.y, -5f, 5f));
+  //  }
     public void OnMouseDown()
     {
         mouseButtonReleased = false;

@@ -9,42 +9,75 @@ public class follow : MonoBehaviour
 
    // public Transform t_camera;
 
-    private Vector3 offset;            //Private variable to store the offset distance between the player and camera
-   // private RaycastHit hit;
-   // private Vector3 camera_offset;
+    private Vector3 offset;     //Private variable to store the offset distance between the player and camera
+
+
+  //  public Transform Player, Target;
+
+   
+
+
+   // public Transform Obstruction;
+   // float zoomSpeed = 2f;
+   //
+  
 
 
 
 
     // Use this for initialization
     void Start()
+
+        
     {
+
+        //Obstruction = Target;
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
         offset = transform.position - player.transform.position;
-       // camera_offset = t_camera.localPosition;
+      
     }
+
+
+  
 
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
-        // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
+
+
         transform.position = player.transform.position + offset;
 
-      //  if(Physics.Linecast(transform.position,t_camera.position,out hit))
-      //  {
-      //
-      //      t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point));
-      //
-      //  }
-      //  else
-      //  {
-      //      
-      //      t_camera.localPosition = Vector3.Lerp(t_camera.localPosition, offset, Time.deltaTime);
-      //  }
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -85.5f, 57.13f), transform.position.y, Mathf.Clamp(transform.position.z, -44f, 58.4f));
 
 
+       // ViewObstructed();
        
+
+
     }
 
-  
+  //  void ViewObstructed()
+  //  {
+  //      RaycastHit hit;
+  //
+  //      if (Physics.Raycast(transform.position, Target.position - transform.position, out hit, 4.5f))
+  //      {
+  //          if (hit.collider.gameObject.tag != "Player")
+  //          {
+  //              Obstruction = hit.transform;
+  //              Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+  //
+  //              if (Vector3.Distance(Obstruction.position, transform.position) >= 3f && Vector3.Distance(transform.position, Target.position) >= 1.5f)
+  //                  transform.Translate(Vector3.forward * zoomSpeed * Time.deltaTime);
+  //          }
+  //          else
+  //          {
+  //              Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+  //              if (Vector3.Distance(transform.position, Target.position) < 4.5f)
+  //                  transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
+  //          }
+  //      }
+  //  }
+
+
 }

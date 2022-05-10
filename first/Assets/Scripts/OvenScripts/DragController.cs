@@ -9,26 +9,20 @@ using UnityEngine.SceneManagement;
 public class DragController : MonoBehaviour
 {
 
-    private bool _isDragActive = false;
 
-    private Vector2 _screenPosition;
-    private Vector3 _worldPosition;
-    private Draggable _lastDragged;
-
-
-    public GameObject pie1;
-    public GameObject pie2;
-    public GameObject pie3;
-    GameObject pies;
-    public static float timer=20;
+    public static float timer=45;
     public GameObject GamePanel;
-    public int thrownPies = 0;
+    public int thrownPies = 0; //thrownTrays = 0;
 
     public Text timerText;
     bool hasWon;
 
     DragController dragScript;
 
+    public GameObject ReduceText;
+
+
+    IEnumerator coroutine;
 
 
 
@@ -50,8 +44,8 @@ public class DragController : MonoBehaviour
 
         hasWon = false;
         thrownPies = 0;
-        timer = 20;
-        pies = GameObject.FindGameObjectWithTag("Pie");
+        timer = 45;
+      
         GamePanel.SetActive(false);
         
         dragScript = GetComponent<DragController>();
@@ -61,9 +55,12 @@ public class DragController : MonoBehaviour
 
     void Update()
     {
-        pie1.transform.position = new Vector2(Mathf.Clamp(pie1.transform.position.x, -8.8f, 8.8f), Mathf.Clamp(pie1.transform.position.y, -5f, 5f));
-        pie2.transform.position = new Vector2(Mathf.Clamp(pie2.transform.position.x, -8.8f, 8.8f), Mathf.Clamp(pie2.transform.position.y, -5f, 5f));
-        pie3.transform.position = new Vector2(Mathf.Clamp(pie3.transform.position.x, -8.8f, 8.8f), Mathf.Clamp(pie3.transform.position.y, -5f, 5f));
+
+
+        if (thrownPies >= 16 && TrolleyDrag.thrownTrays >= 8)
+        {
+            winState();
+        }
 
         if (hasWon == false)
         {
@@ -101,12 +98,38 @@ public class DragController : MonoBehaviour
 
             thrownPies++;
 
-            if(thrownPies>=3)
-            {
-                winState();
-            }
+          // if(thrownPies>=3 && thrownTrays>0)
+          // {
+          //     winState();
+          // }
         }
 
+        if(collision.gameObject.tag=="Tray")
+        {
+
+            
+
+            timer -= 2;
+
+            ReduceText.SetActive(true);
+
+            coroutine = pausetime(2.0f);
+
+            StartCoroutine(coroutine);
+
+           // thrownTrays++;
+
+        }
+
+
+    }
+
+    IEnumerator pausetime(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+
+        ReduceText.SetActive(false);
 
     }
 
