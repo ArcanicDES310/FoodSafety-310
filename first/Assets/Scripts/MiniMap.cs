@@ -16,7 +16,7 @@ public class MiniMap : MonoBehaviour
         newPosition.y = transform.position.y;
         transform.position = newPosition;
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -42.5f, 32f), transform.position.y, Mathf.Clamp(transform.position.z, -26f, 22.2f));
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -33.37f, 24.72f), transform.position.y, Mathf.Clamp(transform.position.z, -25.9f, 22.3f));
 
     }
 

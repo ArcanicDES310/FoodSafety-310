@@ -25,6 +25,7 @@ public class PauseMenu : MonoBehaviour
 
     //GIFs
     public GameObject lockerGif;
+    public GameObject OvenGif;
 
     private void Start()
     {
@@ -73,6 +74,7 @@ public class PauseMenu : MonoBehaviour
 
         //GIFs
         lockerGif.SetActive(false);
+        OvenGif.SetActive(false);
         
 
     }

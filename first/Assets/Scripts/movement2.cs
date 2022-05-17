@@ -32,6 +32,8 @@ public class movement2 : MonoBehaviour
     public GameObject LockerCheck;
 
 
+    public GameObject TaskSoonPanel;
+
 
 
     void Start()
@@ -49,7 +51,7 @@ public class movement2 : MonoBehaviour
 
         }
 
-        transform.position = new Vector3(PlayerPrefs.GetFloat("xPos", 0), PlayerPrefs.GetFloat("yPos", 0), PlayerPrefs.GetFloat("zPos", 0));
+        transform.position = new Vector3(PlayerPrefs.GetFloat("xPos", -40.5f), PlayerPrefs.GetFloat("yPos", 0), PlayerPrefs.GetFloat("zPos", 1.3f));
 
         if(PlayerPrefs.GetInt("hasPlayed",0)==1)
         {
@@ -132,6 +134,7 @@ public class movement2 : MonoBehaviour
 
             NpcPanel.SetActive(false);
             BWInteractButton.SetActive(true);
+            TaskSoonPanel.SetActive(false);
 
         }
 

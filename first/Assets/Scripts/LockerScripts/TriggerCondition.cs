@@ -59,13 +59,7 @@ public class TriggerCondition : MonoBehaviour
 
         taskCounter.text = taskCount.ToString();
 
-      // if (lockerShoe.activeInHierarchy || handwash1==null || handwash2==null)
-      //
-      // {
-      //     taskCount--;
-      //     
-      // }
-
+       
        
 
         if(boots.activeInHierarchy && coat.activeInHierarchy && glove.activeInHierarchy && cap.activeInHierarchy && lockerShoe.activeInHierarchy &&  handwash1==null && handwash2==null) //!handwash1.activeInHierarchy && !handwash2.activeInHierarchy)
